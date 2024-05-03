@@ -1,5 +1,5 @@
 import sys
-sys.path.append('.')
+sys.path.append('../main_logic')
 from random import randint
 from field_of_game.create_sea_battle_field import matrix
 

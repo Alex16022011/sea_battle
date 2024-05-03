@@ -1,5 +1,5 @@
 from random import randint
-from main_logic.place_third_place_ship import matrix
+from place_battle_ships_on_the_field.place_third_place_ship import matrix
 
 row = randint(1, 11)
 column = randint(1, 11)
