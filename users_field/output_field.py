@@ -6,8 +6,8 @@ window.resizable(False, False)
 
 def print_real():
     global matrix
-    for i in range(2, 12):
-        for j in range(2, 12):
+    for i in range(1, 11):
+        for j in range(1, 11):
             if matrix[i][j] == 0:
                 exec(f'btn{i}{j}.config(text="•", fg="blue", font="Arial 9 bold")')
             elif matrix[i][j] == '':
@@ -25,42 +25,30 @@ def change_color(btn, i, j):
             exec(f'matrix[{i}][{j}] = 1')
 
             btn_wrapper[btn] = []
-            if f'matrix[{i + 1}][{j - 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i + 1, j - 1))
-            if f'matrix[{i - 1}][{j + 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i - 1, j + 1))
-            if f'matrix[{i + 1}][{j + 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i + 1, j + 1))
-            if f'matrix[{i - 1}][{j - 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i - 1, j - 1))
-            print(btn_wrapper[btn])
 
-            if i + 1 < 12 and j - 1 > -1 and matrix[i][j] == '':
+            if i + 1 < 12 and j - 1 > -1 and matrix[i + 1][j - 1] == '':
                 matrix[i + 1][j - 1] = 0
-            if i - 1 > -1 and j + 1 < 12 and matrix[i][j] == '':
+            if i - 1 > -1 and j + 1 < 12 and matrix[i - 1][j + 1] == '':
                 matrix[i - 1][j + 1] = 0
-            if i + 1 < 12 and j + 1 < 12 and matrix[i][j] == '':
+            if i + 1 < 12 and j + 1 < 12 and matrix[i + 1][j + 1] == '':
                 matrix[i + 1][j + 1] = 0
-            if i - 1 > -1 and j - 1 > -1 and matrix[i][j] == '':
+            if i - 1 > -1 and j - 1 > -1 and matrix[i - 1][j - 1] == '':
                 matrix[i - 1][j - 1] = 0
             print_real()
         else:
             btn.config(text='')
             dict_for_buttons[btn] = 0
             exec(f"matrix[{i}][{j}] = ''")
-
-            # if i + 1 < 12 and j - 1 > -1:
-            #     matrix[i + 1][j - 1] = ''
-            # if i - 1 > -1 and j + 1 < 12:
-            #     matrix[i - 1][j + 1] = ''
-            # if i + 1 < 12 and j + 1 < 12:
-            #     matrix[i + 1][j + 1] = ''
-            # if i - 1 > -1 and j - 1 > -1:
-            #     matrix[i - 1][j - 1] = ''
-            print(btn_wrapper[btn])
             for i in btn_wrapper[btn]:
                 exec(f"matrix[{i[0]}][{i[1]}] = ''")
-                print(f"matrix[{i[0]}][{i[1]}] = ''")
             print_real()
             btn_wrapper.pop(btn)
     else:
@@ -68,24 +56,23 @@ def change_color(btn, i, j):
             dict_for_buttons[btn] = 1
             btn.config(text='X', font='Arial 9 bold', fg='blue')
             btn_wrapper[btn] = []
-            if f'matrix[{i + 1}][{j - 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i + 1, j - 1))
-            if f'matrix[{i - 1}][{j + 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i - 1, j + 1))
-            if f'matrix[{i + 1}][{j + 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i + 1, j + 1))
-            if f'matrix[{i - 1}][{j - 1}]' == '':
+            if matrix[i + 1][j - 1] == '':
                 btn_wrapper[btn].append((i - 1, j - 1))
-            print(btn_wrapper[btn])
 
 
-            if i + 1 < 12 and j - 1 > -1 and matrix[i][j] == '':
+            if i + 1 < 12 and j - 1 > -1 and matrix[i + 1][j - 1] == '':
                 matrix[i + 1][j - 1] = 0
-            if i - 1 > -1 and j + 1 < 12 and matrix[i][j] == '':
+            if i - 1 > -1 and j + 1 < 12 and matrix[i - 1][j + 1] == '':
                 matrix[i - 1][j + 1] = 0
-            if i + 1 < 12 and j + 1 < 12 and matrix[i][j] == '':
+            if i + 1 < 12 and j + 1 < 12 and matrix[i + 1][j + 1] == '':
                 matrix[i + 1][j + 1] = 0
-            if i - 1 > -1 and j - 1 > -1 and matrix[i][j] == '':
+            if i - 1 > -1 and j - 1 > -1 and matrix[i - 1][j - 1] == '':
                 matrix[i - 1][j - 1] = 0
             exec(f'matrix[{i}][{j}] = 1')
             print_real()
@@ -106,8 +93,8 @@ lbl2{i}.grid(row={i + 1}, column=0)''')
     
 for i in range(1, 11):
     for j in range(1, 11):
-        exec(f'''btn{i + 1}{j + 1} = Button(window, bg="white", fg="blue", width=5, height=2, activeforeground="blue", activebackground="white",
-            bd=3, command=lambda: change_color(btn{i + 1}{j + 1}, {i + 1}, {j + 1}))
-btn{i + 1}{j + 1}.grid(row={i},column={j}, padx=1, pady=1)''')
+        exec(f'''btn{i}{j} = Button(window, bg="white", fg="blue", width=5, height=2, activeforeground="blue", activebackground="white",
+            bd=3, command=lambda: change_color(btn{i}{j}, {i}, {j}))
+btn{i}{j}.grid(row={i},column={j}, padx=1, pady=1)''')
 
 window.mainloop()
