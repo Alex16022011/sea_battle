@@ -22,17 +22,13 @@ def change_color(btn, i, j):
         if dict_for_buttons[btn] == 0:
             btn.config(text='X', font='Arial 9 bold', fg='blue')
             dict_for_buttons[btn] = 1
-            exec(f'matrix[{i}][{j}] = 1')
+            matrix[i][j] = 1
 
             btn_wrapper[btn] = []
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i + 1, j - 1))
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i - 1, j + 1))
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i + 1, j + 1))
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i - 1, j - 1))
+            btn_wrapper[btn].append((i + 1, j - 1))
+            btn_wrapper[btn].append((i - 1, j + 1))
+            btn_wrapper[btn].append((i + 1, j + 1))
+            btn_wrapper[btn].append((i - 1, j - 1))
 
             if i + 1 < 12 and j - 1 > -1 and matrix[i + 1][j - 1] == '':
                 matrix[i + 1][j - 1] = 0
@@ -46,9 +42,17 @@ def change_color(btn, i, j):
         else:
             btn.config(text='')
             dict_for_buttons[btn] = 0
-            exec(f"matrix[{i}][{j}] = ''")
+            matrix[i][j] = ''
             for i in btn_wrapper[btn]:
-                exec(f"matrix[{i[0]}][{i[1]}] = ''")
+                flag = True
+                val = btn_wrapper.values()
+                for j in val:
+                    if j != btn_wrapper[btn]:
+                        if i in j:
+                            flag = False
+                            break
+                if flag:
+                    matrix[i[0]][i[1]] = ''
             print_real()
             btn_wrapper.pop(btn)
     else:
@@ -56,14 +60,10 @@ def change_color(btn, i, j):
             dict_for_buttons[btn] = 1
             btn.config(text='X', font='Arial 9 bold', fg='blue')
             btn_wrapper[btn] = []
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i + 1, j - 1))
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i - 1, j + 1))
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i + 1, j + 1))
-            if matrix[i + 1][j - 1] == '':
-                btn_wrapper[btn].append((i - 1, j - 1))
+            btn_wrapper[btn].append((i + 1, j - 1))
+            btn_wrapper[btn].append((i - 1, j + 1))
+            btn_wrapper[btn].append((i + 1, j + 1))
+            btn_wrapper[btn].append((i - 1, j - 1))
 
 
             if i + 1 < 12 and j - 1 > -1 and matrix[i + 1][j - 1] == '':
@@ -74,7 +74,7 @@ def change_color(btn, i, j):
                 matrix[i + 1][j + 1] = 0
             if i - 1 > -1 and j - 1 > -1 and matrix[i - 1][j - 1] == '':
                 matrix[i - 1][j - 1] = 0
-            exec(f'matrix[{i}][{j}] = 1')
+            matrix[i][j] = 1
             print_real()
     
 dict_for_buttons = {}
