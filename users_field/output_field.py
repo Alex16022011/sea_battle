@@ -1,3 +1,6 @@
+import sys
+sys.path.append('.')
+from functions.function import *
 from tkinter import Tk, Button, Label
 window = Tk()
 window.geometry('750x550+250+50')
@@ -53,6 +56,22 @@ def change_color(btn, i, j):
                             break
                 if flag:
                     matrix[i[0]][i[1]] = ''
+                    # if i[1] - i[0] == 4:
+                    #     fourth_ship += 1
+                    # elif i[1] - i[0] == 3:
+                    #     third_ship += 1
+                    # elif i[1] - i[0] == 2:
+                    #     second_ship += 1
+                    # elif i[1] - i[0] == 1:
+                    #     first_ship += 1
+            for i in range(11):
+                for j in range(11):
+                    if matrix[i][j] == 0:
+                        if str(matrix[i + 1][j]) in '0""' and str(matrix[i - 1][j]) in '0""':
+                            if str(matrix[i][j + 1]) in '0""' and str(matrix[i][j - 1]) in '0""':
+                                if str(matrix[i + 1][j + 1]) in '0""' and str(matrix[i + 1][j - 1]) in '0""':
+                                    if str(matrix[i - 1][j + 1]) in '0""' and str(matrix[i - 1][j - 1]) in '0""':
+                                        matrix[i][j] = ''
             print_real()
             btn_wrapper.pop(btn)
     else:
@@ -76,6 +95,8 @@ def change_color(btn, i, j):
                 matrix[i - 1][j - 1] = 0
             matrix[i][j] = 1
             print_real()
+    matrix = stopper(matrix)
+    print_real()
     
 dict_for_buttons = {}
 btn_wrapper = {}
