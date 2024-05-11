@@ -20,16 +20,16 @@ def right_cell(row, column, fill):
 
 
 for i in range(10, 11):
-    row_or_column = randint(1, 2)
+    row_or_column = choice(['row', 'column'])
     row, column = randint(1, 11), randint(1, 11)
     row, column = right_cell(row, column, i)
-    if row_or_column == 1:
+    if row_or_column == 'column':
         row2 = choice([row - 1, row + 1])
         if matrix[row2][column] == '':
             matrix[row2][column] = i
         else:
             while matrix[row2][column] != '':
-                column = choice([column - 1, column + 1])
+                row2 = choice([row - 1, row + 1])
             if matrix[row2][column] == '':
                 matrix[row2][column] = i
 
@@ -61,7 +61,7 @@ for i in range(10, 11):
         matrix[max(row, row2, row3, row4) + 1][column + 1] = 0
         matrix[max(row, row2, row3, row4) + 1][column - 1] = 0
 
-    elif row_or_column == 2:
+    elif row_or_column == 'row':
         column2 = choice([column - 1, column + 1])
         if matrix[row][column2] == '':
             matrix[row][column2] = i
