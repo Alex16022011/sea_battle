@@ -6,9 +6,7 @@ window = Tk()
 window.geometry('750x550+250+50')
 window.resizable(False, False)
 
-
-def print_real():
-    global matrix
+def print_real(matrix):
     for i in range(1, 11):
         for j in range(1, 11):
             if matrix[i][j] == 0:
@@ -16,11 +14,11 @@ def print_real():
             elif matrix[i][j] == '':
                 exec(f'btn{i}{j}.config(text="")')
 
-
 def change_color(btn, i, j):
     global dict_for_buttons
     global matrix
     global btn_wrapper
+    print('до:', *matrix, sep='\n')
     if btn in dict_for_buttons and matrix[i][j] != 0:
         if dict_for_buttons[btn] == 0:
             btn.config(text='X', font='Arial 9 bold', fg='blue')
@@ -41,7 +39,6 @@ def change_color(btn, i, j):
                 matrix[i + 1][j + 1] = 0
             if i - 1 > -1 and j - 1 > -1 and matrix[i - 1][j - 1] == '':
                 matrix[i - 1][j - 1] = 0
-            print_real()
         else:
             btn.config(text='')
             dict_for_buttons[btn] = 0
@@ -72,7 +69,6 @@ def change_color(btn, i, j):
                                 if str(matrix[i + 1][j + 1]) in '0""' and str(matrix[i + 1][j - 1]) in '0""':
                                     if str(matrix[i - 1][j + 1]) in '0""' and str(matrix[i - 1][j - 1]) in '0""':
                                         matrix[i][j] = ''
-            print_real()
             btn_wrapper.pop(btn)
     else:
         if matrix[i][j] != 0:
@@ -94,15 +90,16 @@ def change_color(btn, i, j):
             if i - 1 > -1 and j - 1 > -1 and matrix[i - 1][j - 1] == '':
                 matrix[i - 1][j - 1] = 0
             matrix[i][j] = 1
-            print_real()
     matrix = stopper(matrix)
-    print_real()
+    print_real(matrix)
+    print('после:', *matrix, sep='\n')
     
 dict_for_buttons = {}
 btn_wrapper = {}
 matrix = [['' for j in range(12)] for i in range(12)]
 alphabet = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'К']
 digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 
 for i in range(10):
     exec(f'''lbl{i} = Label(window, text=alphabet[{i}], font="Arial 15")
