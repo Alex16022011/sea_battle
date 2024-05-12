@@ -1,9 +1,8 @@
-# Сделано
 import sys
-sys.path.append('../place_battle_ships_on_the_field')
+sys.path.append('.')
 from random import randint
-# from main_logic.place_second_place_ship import matrix
-from field_of_game.create_sea_battle_field import matrix
+from place_battle_ships_on_the_field.place_second_place_ship import matrix
+# from field_of_game.create_sea_battle_field import matrix
 
 
 def wrapper(matrix, row, column):

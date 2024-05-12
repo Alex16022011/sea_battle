@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../place_battle_ships_on_the_field')
+sys.path.append('.')
 
 from random import randint, choice
 from field_of_game.create_sea_battle_field import matrix

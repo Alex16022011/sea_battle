@@ -1,9 +1,9 @@
 import sys
-sys.path.append('../place_battle_ships_on_the_field')
+sys.path.append('.')
 
 from random import randint, choice
-# from place_battle_ships_on_the_field.place_fourth_place_ship import matrix
-from field_of_game.create_sea_battle_field import matrix
+from place_battle_ships_on_the_field.place_fourth_place_ship import matrix
+# from field_of_game.create_sea_battle_field import matrix
 row = randint(1, 11)
 column = randint(1, 11)
 
