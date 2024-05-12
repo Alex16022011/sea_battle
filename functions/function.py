@@ -12,27 +12,58 @@ def right_order(obj, len):
     if counter == counter2:
         return True
 
-def checker(matrix, dct, col_or_row):
-    if col_or_row == 0:
-        for i in dct.keys():
-            if i == 'fourth':
-                t = dct[i]
-                for j in t.keys():
-                    a, b = t[j]
-                    if abs(b) - abs(a) != 5:
-                        return None
-                    counter = 0
-                    counter2 = 0
-                    for k in range(a + 1, b):
-                        if str(matrix[j][k]) not in '0""':
-                            counter += 1
-                        counter2 += 1
-                    if counter != counter2:
-                        matrix[j][a] = ''
-                        matrix[j][b] = ''
-    else:
-        pass
-    return matrix
+# def checker(matrix, dct, col_or_row):
+#     if col_or_row == 0:
+#         # row
+#         for i in dct.keys():
+#             if i == 'fourth':
+#                 t = dct[i]
+#                 for j in t.keys():
+#                     a, b = t[j]
+#                     if abs(b) - abs(a) != 5:
+#                         return None
+#                     counter = 0
+#                     counter2 = 0
+#                     for k in range(a + 1, b):
+#                         if str(matrix[j][k]) not in '0""':
+#                             counter += 1
+#                         counter2 += 1
+#                     if counter != counter2:
+#                         matrix[j][a] = ''
+#                         matrix[j][b] = ''
+#     else:
+#         # col
+#         for i in dct.keys():
+#             if i == 'fourth':
+#                 t = dct[i]
+#                 for j in t.keys():
+#                     a, b = t[j]
+#                     if abs(b) - abs(a) != 5:
+#                         return None
+#                     counter = 0
+#                     counter2 = 0
+#                     for k in range(a + 1, b):
+#                         if str(matrix[k][j]) not in '0""':
+#                             counter += 1
+#                         counter2 += 1
+#                     if counter != counter2:
+#                         matrix[a][j] = ''
+#                         matrix[b][j] = ''
+#     return matrix
+
+def right_place_of_ship(matrix, dct1, dct2):
+    global fourth_ship
+    global third_ship
+    global second_ship
+    global first_ship
+    for i in range(len(matrix)):
+        counter = 0
+        counter2 = 0
+        if matrix[i].count(1) > 0:
+            for j in range(len(matrix[0])):
+                if  matrix[i][j] == 1:
+                    counter += 1
+                counter2 += 1
 
 def stopper(matrix):
     global fourth_ship
@@ -80,28 +111,27 @@ def stopper(matrix):
                     stopper_points_column[i].append((min(col[i]) - 1, max(col[i]) + 1))
                     fourth_ship -= 1
                     column_ship['fourth'] = {i: (min(col[i]) - 1, max(col[i]) + 1)}
-    # for _ in range(len(row_ship)):
-    for i in row_ship.keys():
-        if i == 'fourth':
-            matrix = checker(matrix, row_ship, 0)
-            fourth_ship += 1
-        elif i == 'third':
-            pass
-        elif i == 'second':
-            pass
-        elif i == 'first':
-            pass
+    # for i in row_ship.keys():
+    #     if i == 'fourth':
+    #         matrix = checker(matrix, row_ship, 0)
+    #         fourth_ship += 1
+    #     elif i == 'third':
+    #         pass
+    #     elif i == 'second':
+    #         pass
+    #     elif i == 'first':
+    #         pass
     
-    for i in column_ship.keys():
-        if i == 'fourth':
-            matrix = checker(matrix, column_ship, 1)
-            fourth_ship += 1
-        elif i == 'third':
-            pass
-        elif i == 'second':
-            pass
-        elif i == 'first':
-            pass
+    # for i in column_ship.keys():
+    #     if i == 'fourth':
+    #         matrix = checker(matrix, column_ship, 1)
+    #         fourth_ship += 1
+    #     elif i == 'third':
+    #         pass
+    #     elif i == 'second':
+    #         pass
+    #     elif i == 'first':
+    #         pass
 
         # print(stopper_points_row)
         # print(stopper_points_column)
