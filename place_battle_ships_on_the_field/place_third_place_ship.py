@@ -20,7 +20,7 @@ def right_cell(row, column, fill):
     return row, column
 
 
-for i in range(5, 8):
+for i in range(8, 10):
     row_or_column = choice(['row', 'column'])
     row, column = randint(1, 11), randint(1, 11)
     print(row, column)
