@@ -64,6 +64,21 @@ def right_place_of_ship(matrix, dct1, dct2):
                 if  matrix[i][j] == 1:
                     counter += 1
                 counter2 += 1
+                if matrix[i][j] != 1:
+                    break
+            if counter == counter2:
+                if counter == 4:
+                    if fourth_ship != 0:
+                        fourth_ship -= 1
+                    else:
+                        return False
+                elif counter == 3:
+                    pass
+                elif counter == 2:
+                    pass
+                elif counter == 1:
+                    pass
+
 
 def stopper(matrix):
     global fourth_ship
