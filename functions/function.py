@@ -1,5 +1,6 @@
 import sys
 sys.path.append('.')
+from functions.main_func import play
 def right_order(obj, len):
     counter = 0
     counter2 = 0
@@ -13,7 +14,7 @@ def right_order(obj, len):
         return True
 
 
-def right_place_of_ship(matrix, dct1, dct2):
+def right_place_of_ship(matrix):
     global fourth_ship
     global third_ship
     global second_ship
