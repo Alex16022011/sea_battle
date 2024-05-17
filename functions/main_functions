@@ -1,5 +1,6 @@
 import sys
 sys.path.append('.')
+sys.path.append('C:/Users/МойКомпьютер/.vscode/sea_battle/functions/main_functions')
 from tkinter import Label
 def back_index(a, found):
     for i in range(len(a)):
