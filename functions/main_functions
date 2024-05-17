@@ -1,3 +1,6 @@
+import sys
+sys.path.append('.')
+sys.path.append('C:/Users/МойКомпьютер/.vscode/sea_battle/functions/main_functions')
 from tkinter import Label
 def back_index(a, found):
     for i in range(len(a)):
@@ -57,7 +60,7 @@ def right_place_of_ship(matrix1):
                     return False
                 need_counter += 1
             else:
-                a = into_it(matrix[i])
+                a = into_it(matrix1[i])
                 for j in a:
                     if len(j) == 4 and fourth_ship != 0:
                         fourth_ship -= 1
@@ -77,13 +80,13 @@ def right_place_of_ship(matrix1):
     for i in range(12):
         list1 = []
         for j in range(12):
-            list1.append(matrix[j][i])
+            list1.append(matrix1[j][i])
         matrix3.append(list1)
     matrix1 = matrix3.copy()
 
     for i in range(12):
         if matrix1[i].count(1) > 0:
-            a = back_index(matrix[i], 1) - start_index(matrix1[i], 1)  
+            a = back_index(matrix1[i], 1) - start_index(matrix1[i], 1)  
             if -1 < a < 4:
                 if a == 0 and first_ship != 0:
                     first_ship -= 1
@@ -97,7 +100,7 @@ def right_place_of_ship(matrix1):
                     return False
                 need_counter += 1
             else:
-                a = into_it(matrix[i])
+                a = into_it(matrix1[i])
                 for j in a:
                     if len(j) == 4 and fourth_ship != 0:
                         fourth_ship -= 1
@@ -115,35 +118,11 @@ def right_place_of_ship(matrix1):
     return False
 
 def play(matrix):
+    counter = 0
     if right_place_of_ship(matrix):
-        pass
+        if counter == 1:
+            lbl.destroy()
     else:
         lbl = Label(text='Вы неправильно расставили корабли', font='Arial 20')
         lbl.grid(row=12, column=0, columnspan=11)
-                    
-matrix = [['', '', '', '', '', '','', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', 1, 1, 1, 1, '', 1, 1, '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', ''], 
-['', '', '', '', '', '', '', '', '', '', '', '']]
-# matrix = [['', '', '', '', '', '','', '', '', '', '', ''], 
-# ['', '', '', '', '', '', '', '', '', '', '', ''], 
-# ['', '', '', '', '', 1, '', '', '', '', '', ''], 
-# ['', '', '', '', '', 1, '', '', '', '', '', ''], 
-# ['', '', '', '', '', 1, '', '', '', '', '', ''], 
-# ['', '', '', '', '', 1, '', '', '', '', '', ''], 
-# ['', '', '', '', '', '', '', '', '', '', '', ''], 
-# ['', '', '', '', '', '', '', '', '', '', '', ''], 
-# ['', '', '', '', '', '', '', '', '', '', '', ''], 
-# ['', '', '', '', '', '', '', '', '', '', '', ''], 
-# ['', '', '', '', '', '', '', '', '', '', '', ''], 
-# ['', '', '', '', '', '', '', '', '', '', '', '']]
-fourth_ship, third_ship, second_ship, first_ship = 1, 2, 3, 4
-print(right_place_of_ship(matrix))
+        counter = 1
