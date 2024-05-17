@@ -1,9 +1,8 @@
-# Сделано
 import sys
-sys.path.append('../main_logic')
+sys.path.append('.')
 from random import randint
-# from main_logic.place_second_place_ship import matrix
-from field_of_game.create_sea_battle_field import matrix
+from place_battle_ships_on_the_field.place_second_place_ship import matrix
+# from field_of_game.create_sea_battle_field import matrix
 
 
 def wrapper(matrix, row, column):
@@ -20,15 +19,12 @@ def wrapper(matrix, row, column):
 for i in range(1, 5):
     row = randint(1, 11)
     column = randint(1, 11)
-    if matrix[row][column] == '':
-        matrix[row][column] = i
-    else:
-        while matrix[row][column] != '':
-            row = randint(1, 11)
-            column = randint(1, 11)
-        if matrix[row][column] == '':
-            matrix[row][column] = i
+    while matrix[row][column] != '':
+        row = randint(1, 11)
+        column = randint(1, 11)
+    matrix[row][column] = i
     wrapper(matrix, row, column)
+
 
 if __name__ == '__main__':
     print(*matrix, sep="\n")
