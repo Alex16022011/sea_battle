@@ -3,8 +3,9 @@ sys.path.append('.')
 from functions.function import *
 from tkinter import Tk, Button, Label
 window = Tk()
-window.geometry('750x550+250+50')
+window.geometry('800x550+250+50')
 window.resizable(False, False)
+btn = Button(text='Отправить', command=lambda: play(matrix))
 
 def print_real(matrix):
     for i in range(1, 11):
