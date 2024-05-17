@@ -19,7 +19,6 @@ def change_color(btn, i, j):
     global dict_for_buttons
     global matrix
     global btn_wrapper
-    print('до:', *matrix, sep='\n')
     if btn in dict_for_buttons and matrix[i][j] != 0:
         if dict_for_buttons[btn] == 0:
             btn.config(text='X', font='Arial 9 bold', fg='blue')
@@ -91,9 +90,8 @@ def change_color(btn, i, j):
             if i - 1 > -1 and j - 1 > -1 and matrix[i - 1][j - 1] == '':
                 matrix[i - 1][j - 1] = 0
             matrix[i][j] = 1
-    matrix = stopper(matrix)
+    stopper(matrix)
     print_real(matrix)
-    print('после:', *matrix, sep='\n')
     
 dict_for_buttons = {}
 btn_wrapper = {}
