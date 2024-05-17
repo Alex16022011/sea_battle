@@ -1,3 +1,5 @@
+import sys
+sys.path.append('.')
 matrix = []
 for i in range(12):
     help = []

@@ -1,4 +1,6 @@
-from tkinter import *
+import sys
+sys.path.append('.')
+from tkinter import Tk, Button
 from field_of_game.create_sea_battle_field import matrix
 window = Tk()
 window.geometry("780x730+250+100")
