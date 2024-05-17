@@ -19,15 +19,12 @@ def wrapper(matrix, row, column):
 for i in range(1, 5):
     row = randint(1, 11)
     column = randint(1, 11)
-    if matrix[row][column] == '':
-        matrix[row][column] = i
-    else:
-        while matrix[row][column] != '':
-            row = randint(1, 11)
-            column = randint(1, 11)
-        if matrix[row][column] == '':
-            matrix[row][column] = i
+    while matrix[row][column] != '':
+        row = randint(1, 11)
+        column = randint(1, 11)
+    matrix[row][column] = i
     wrapper(matrix, row, column)
+
 
 if __name__ == '__main__':
     print(*matrix, sep="\n")

@@ -25,22 +25,27 @@ for i in range(10, 11):
     row, column = right_cell(row, column, i)
     if row_or_column == 'column':
         row2 = choice([row - 1, row + 1])
-        if matrix[row2][column] == '':
-            matrix[row2][column] = i
-        else:
-            while matrix[row2][column] != '':
-                row2 = choice([row - 1, row + 1])
-            if matrix[row2][column] == '':
-                matrix[row2][column] = i
+        if matrix[row2][column] != '':
+            if row2 == row - 1:
+                row2 = row + 1
+            else:
+                row2 = row - 1
+        matrix[row2][column] = i
 
         row3 = choice([min(row, row2) - 1, max(row, row2) + 1])
-        while matrix[row3][column] != '':
-            row3 = choice([min(row, row2) - 1, max(row, row2) + 1])
+        if matrix[row3][column] != '':
+            if row3 == min(row, row2) - 1:
+                row3 = max(row, row2) + 1
+            else:
+                row3 = min(row, row2) - 1
         matrix[row3][column] = i
 
         row4 = choice([min(row, row2, row3) - 1, max(row, row2, row3) + 1])
-        while matrix[row4][column] != '':
-            row4 = choice([min(row, row2, row3) - 1, max(row, row2, row3) + 1])
+        if matrix[row4][column] != '':
+            if row4 == min(row, row2, row3) - 1:
+                row4 = max(row, row2, row3) + 1
+            else:
+                row4 = min(row, row2, row3) - 1
         matrix[row4][column] = i
 
         matrix[row][column + 1] = 0
@@ -63,26 +68,31 @@ for i in range(10, 11):
 
     elif row_or_column == 'row':
         column2 = choice([column - 1, column + 1])
-        if matrix[row][column2] == '':
-            matrix[row][column2] = i
-        else:
-            while matrix[row][column2] != '':
-                column2 = choice([column - 1, column + 1])
-            if matrix[row][column2] == '':
-                matrix[row][column2] = i
+        if matrix[row][column2] != '':
+            if column2 == column - 1:
+                column2 = column + 1
+            else:
+                column2 = column - 1
+        matrix[row][column2] = i
         matrix[row + 1][column] = 0
         matrix[row - 1][column] = 0
         matrix[row + 1][column2] = 0
         matrix[row - 1][column2] = 0
 
         column3 = choice([min(column, column2) - 1, max(column, column2) + 1])
-        while matrix[row][column3] != '':
-            column3 = choice([min(column, column2) - 1, max(column, column2) + 1])
+        if matrix[row][column3] != '':
+            if column3 == min(column, column2) - 1:
+                column3 = max(column, column2) + 1
+            else:
+                column3 = min(column, column2) - 1
         matrix[row][column3] = i
 
         column4 = choice([min(column, column2, column3) - 1, max(column, column2, column3) + 1])
-        while matrix[row][column4] != '':
-            column4 = choice([min(column, column2, column3) - 1, max(column, column2, column3) + 1])
+        if matrix[row][column4] != '':
+            if column4 == min(column, column2, column3) - 1:
+                column4 = max(column, column2, column3) + 1
+            else:
+                column4 = min(column, column2, column3) - 1
         matrix[row][column4] = i
 
         matrix[row + 1][column3] = 0
@@ -95,7 +105,6 @@ for i in range(10, 11):
         matrix[row + 1][max(column, column2, column3, column4) + 1] = 0
         matrix[row - 1][min(column, column2, column3, column4) - 1] = 0
         matrix[row - 1][max(column, column2, column3, column4) + 1] = 0
-
 
 
 if __name__ == '__main__':

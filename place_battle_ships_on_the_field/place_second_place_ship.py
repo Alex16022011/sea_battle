@@ -38,8 +38,11 @@ for i in range(5, 8):
     row, column = right_cell(row, column, i)
     if row_or_column == 'column':
         row2 = choice([row - 1, row + 1])
-        while matrix[row2][column] != '':
-            row2 = choice([row - 1, row + 1])
+        if matrix[row2][column] != '':
+            if row2 == row - 1:
+                row2 = row + 1
+            else:
+                row2 = row - 1
         matrix[row2][column] = i
 
         matrix[row][column + 1] = 0
@@ -57,8 +60,11 @@ for i in range(5, 8):
         matrix[max(row, row2) + 1][column - 1] = 0
     elif row_or_column == 'row':
         column2 = choice([column - 1, column + 1])
-        while matrix[row][column2] != '':
-            column2 = choice([column - 1, column + 1])
+        if matrix[row][column2] != '':
+            if column2 == column - 1:
+                column2 = column + 1
+            else:
+                column2 = column - 1
         matrix[row][column2] = i
 
         matrix[row + 1][column] = 0
@@ -73,6 +79,8 @@ for i in range(5, 8):
         matrix[row + 1][max(column, column2) + 1] = 0
         matrix[row - 1][min(column, column2) - 1] = 0
         matrix[row - 1][max(column, column2) + 1] = 0
+
+
 if __name__ == '__main__':
     print(*matrix, sep="\n")
 
