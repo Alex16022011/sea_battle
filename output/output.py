@@ -1,7 +1,5 @@
 import sys
 sys.path.append('.')
-from playsound import playsound
-from time import sleep
 
 from tkinter import Tk, Label, Button
 # from field_of_game.create_sea_battle_field import matrix
