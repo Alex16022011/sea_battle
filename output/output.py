@@ -37,4 +37,3 @@ for i in range(12):
         exec(f'btn{i}_{j}.grid(row={i}, column={j})')
 
 window.mainloop()
-#, command=lambda r=i, c=j: color(r, c)
