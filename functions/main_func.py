@@ -119,10 +119,10 @@ def right_place_of_ship(matrix1):
 
 def play(matrix):
     counter = 0
+    lbl = Label(text='Вы неправильно расставили корабли', font='Arial 20')
     if right_place_of_ship(matrix):
         if counter == 1:
             lbl.destroy()
     else:
-        lbl = Label(text='Вы неправильно расставили корабли', font='Arial 20')
         lbl.grid(row=12, column=0, columnspan=11)
         counter = 1
