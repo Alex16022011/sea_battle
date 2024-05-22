@@ -6,14 +6,22 @@ from place_battle_ships_on_the_field.place_second_place_ship import matrix
 
 
 def wrapper(matrix, row, column):
-    matrix[row - 1][column] = 0
-    matrix[row + 1][column] = 0
-    matrix[row][column + 1] = 0
-    matrix[row][column - 1] = 0
-    matrix[row - 1][column - 1] = 0
-    matrix[row - 1][column + 1] = 0
-    matrix[row + 1][column - 1] = 0
-    matrix[row + 1][column + 1] = 0
+    if 0 < row - 1 < 12 and -1 < column < 11:
+        matrix[row - 1][column] = 0
+    if -1 < row + 1 < 11 and -1 < column < 11:
+        matrix[row + 1][column] = 0
+    if -1 < row < 11 and -1 < column + 1 < 11:
+        matrix[row][column + 1] = 0
+    if -1 < row < 11 and 0 < column - 1 < 11:
+        matrix[row][column - 1] = 0
+    if 0 < row - 1 < 11 and 0 < column - 1 < 11:
+        matrix[row - 1][column - 1] = 0
+    if 0 < row - 1 < 11 and -1 < column + 1 < 11:
+        matrix[row - 1][column + 1] = 0
+    if -1 < row + 1 < 11 and 0 < column - 1 < 11:
+        matrix[row + 1][column - 1] = 0
+    if -1 < row + 1 < 11 and 0 < column + 1 < 11:
+        matrix[row + 1][column + 1] = 0
 
 
 for i in range(1, 5):

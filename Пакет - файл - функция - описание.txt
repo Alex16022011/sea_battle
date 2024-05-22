@@ -1,0 +1,91 @@
+1.clear_variant
+    a). clear_variant_for_computer
+        •
+        •
+        •
+    b). clear_variant_for_user
+        •
+        •
+        •
+2.computer_logic
+    a). __init__.py
+        •
+
+3.computer_logic_of_shouting
+    a).__init__.py
+        •
+
+4.field_of_game
+    a).__init__.py
+        •
+    b).create_sea_battle_field.py
+        • create_field(row, cols)
+            - Функция create_field() принимает 2 аргумента: row (кол-во строк) и cols
+            (кол-во столбцов), row и cols должны быть равны иначе функция вернет None
+            и выводит квадратную матрицу.
+
+5.functions
+    a).__init__.py
+        •
+    b).function
+        • stopper(matrix)
+            - Функция stopper(matrix) принимает 1 аргумент: matrix (матрица) и она
+              ограничитель - кол-во кораблей не сходится - разместит Label, иначе, если все верно, и есть Label, то она его уберет.
+    c).main_func
+        • back_index(a, found)
+            - Функция back_index(a, found) принимает 2 аргумента: a (список),
+              found (элемент последний индекс которого надо найти), если found в списке(a),
+              то функция вернет крайний индекс found в списке, иначе вернет пустую строку
+        • start_index(a, found)
+            - Функция start_index(a, found) принимает 2 аргумента: a (список),
+              found (элемент первый индекс которого надо найти), если found в списке(a),
+              то функция вернет первый индекс found в списке, иначе вернет пустую строку
+        • into_it(list1)
+            - Функция into_it(list1) принимает 2 аргумента: list1(список), what_found(что вынести из списка)
+              Она принимает list1 и what_found, и создает матрицу в которой только эти числа.
+              Например код:
+              list1 = [1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1]
+              result = into_it(list1)
+              print(result)
+              Выведет:
+              [[1, 1], [1], [1], [1], [1]]
+        • right_place_of_ship(matrix1)
+            - Функция right_place_of_ship(matrix1) принимает 1 аргумент: matrix1(матрица) и считает корабли по строкам и столбцам,
+              если все верно - вернет True, иначе False
+
+6.main_window
+    a).__init__.py
+        •
+    b). window.py
+        - Расставляет все значки на главном окне для пользователя
+
+7.output
+    a).__init__.py
+        •
+    b).output.py
+        • color(btnij, i, j, when_change_color)
+            - Функция color(btnij, i, j, when_change_color) принимает 4 аргумента:
+              имя кнопки, строка, столбец, когда менять цвет. Если условие совпадает,
+              то кнопка меняет свой цвет
+
+8.place_battle_ships_on_the_field
+    a).__init__.py
+        •
+    b).place_first_palace_ship.py
+        • Ставит однопалубный корабль
+    c).place_second_palace_ship.py
+        • Ставит двухпалубный корабль
+    d).place_third_palace_ship.py
+        • Ставит трехпалубный корабль
+    e).place_fourth_palace_ship.py
+        • Ставит четырехпалубный корабль
+
+9.user_field
+    a).__init__.py
+        •
+    b).
+        •print_real(matrix)
+            - Функция print_real(matrix) заменяет нуди на точки, показывая где нельзя ставить корабль.
+        •change_color(btn, i, j)
+            - Функция change_color(btn, i, j) работает с клеткой и ее окружением когда ты ее нажимаешь. Подробнее можно узнать,
+              посмотрев код)
