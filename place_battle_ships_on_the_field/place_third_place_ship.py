@@ -23,7 +23,6 @@ def right_cell(row, column, fill):
 for i in range(8, 10):
     row_or_column = choice(['row', 'column'])
     row, column = randint(1, 11), randint(1, 11)
-    print(row, column)
     row, column = right_cell(row, column, i)
     if row_or_column == 'column':
         row2 = choice([row - 1, row + 1])
@@ -33,10 +32,14 @@ for i in range(8, 10):
             else:
                 row2 = row - 1
         matrix[row2][column] = i
-        matrix[row2][column + 1] = 0
-        matrix[row2][column - 1] = 0
-        matrix[row][column + 1] = 0
-        matrix[row][column - 1] = 0
+        if -1 < row2 < 11:
+            matrix[row2][column + 1] = 0
+            matrix[row2][column - 1] = 0
+        if -1 < row < 11:
+            if -1 < column + 1 < 11:
+                matrix[row][column + 1] = 0
+            if 0 < column - 1 < 11:
+                matrix[row][column - 1] = 0
 
         row3 = choice([min(row, row2) - 1, max(row, row2) + 1])
         if matrix[row3][column] != '':
@@ -46,21 +49,36 @@ for i in range(8, 10):
                 row3 = min(row, row2) - 1
         matrix[row3][column] = i
 
-        matrix[row][column + 1] = 0
-        matrix[row2][column + 1] = 0
-        matrix[row3][column + 1] = 0
+        if -1 < row < 11 and -1 < column + 1 < 11:
+            matrix[row][column + 1] = 0
+        if -1 < row2 < 11 and -1 < column + 1 < 11:
+            matrix[row2][column + 1] = 0
+        if -1 < row3 < 11 and -1 < column + 1 < 11:
+            matrix[row3][column + 1] = 0
 
-        matrix[row][column - 1] = 0
-        matrix[row2][column - 1] = 0
-        matrix[row3][column - 1] = 0
+        if -1 < row < 11 and 0 < column - 1 < 11:
+            matrix[row][column - 1] = 0
+        if -1 < row2 < 11 and 0 < column - 1 < 11:
+            matrix[row2][column - 1] = 0
+        if -1 < row3 < 11 and 0 < column - 1 < 11:
+            matrix[row3][column - 1] = 0
 
-        matrix[min(row, row2, row3) - 1][column] = 0
-        matrix[max(row, row2, row3) + 1][column] = 0
+        if 0 < min(row, row2, row3) - 1 < 11 and -1 < column < 11:
+            matrix[min(row, row2, row3) - 1][column] = 0
+        if -1 < max(row, row2, row3) + 1 < 11 and -1 < column < 11:
+            matrix[max(row, row2, row3) + 1][column] = 0
 
-        matrix[min(row, row2, row3) - 1][column + 1] = 0
-        matrix[max(row, row2, row3) + 1][column + 1] = 0
-        matrix[min(row, row2, row3) - 1][column - 1] = 0
-        matrix[max(row, row2, row3) + 1][column - 1] = 0
+        if -1 < column + 1 < 11:
+            if 0 < min(row, row2, row3) - 1 < 11:
+                matrix[min(row, row2, row3) - 1][column + 1] = 0
+            if -1 < max(row, row2, row3) + 1 < 11:
+                matrix[max(row, row2, row3) + 1][column + 1] = 0
+
+        if 0 < column - 1 < 11:
+            if 0 < min(row, row2, row3) - 1 < 11:
+                matrix[min(row, row2, row3) - 1][column - 1] = 0
+            if 0 < max(row, row2, row3) + 1 < 11:
+                matrix[max(row, row2, row3) + 1][column - 1] = 0
     elif row_or_column == 'row':
         column2 = choice([column - 1, column + 1])
         if matrix[row][column2] != '':
@@ -78,21 +96,32 @@ for i in range(8, 10):
                 column3 = min(column, column2) - 1
         matrix[row][column3] = i
 
-        matrix[row - 1][column] = 0
-        matrix[row - 1][column2] = 0
-        matrix[row - 1][column3] = 0
+        if 0 < row - 1 < 11:
+            matrix[row - 1][column] = 0
+            matrix[row - 1][column2] = 0
+            matrix[row - 1][column3] = 0
+        if -1 < row + 1 < 11:
+            matrix[row + 1][column] = 0
+            matrix[row + 1][column2] = 0
+            matrix[row + 1][column3] = 0
 
-        matrix[row + 1][column] = 0
-        matrix[row + 1][column2] = 0
-        matrix[row + 1][column3] = 0
+        if -1 < row < 11:
+            if 0 < min(column, column2, column3) - 1 < 11:
+                matrix[row][min(column, column2, column3) - 1] = 0
+            if -1 < max(column, column2, column3) + 1 < 11:
+                matrix[row][max(column, column2, column3) + 1] = 0
 
-        matrix[row][min(column, column2, column3) - 1] = 0
-        matrix[row][max(column, column2, column3) + 1] = 0
+        if -1 < row + 1 < 11:
+            if 0 < min(column, column2, column3) - 1 < 11:
+                matrix[row + 1][min(column, column2, column3) - 1] = 0
+            if -1 < max(column, column2, column3) + 1 < 11:
+                matrix[row + 1][max(column, column2, column3) + 1] = 0
 
-        matrix[row + 1][min(column, column2, column3) - 1] = 0
-        matrix[row + 1][max(column, column2, column3) + 1] = 0
-        matrix[row - 1][min(column, column2, column3) - 1] = 0
-        matrix[row - 1][max(column, column2, column3) + 1] = 0
+        if 0 < row - 1 < 11:
+            if 0 < min(column, column2, column3) - 1 < 11:
+                matrix[row - 1][min(column, column2, column3) - 1] = 0
+            if -1 < max(column, column2, column3) + 1 < 11:
+                matrix[row - 1][max(column, column2, column3) + 1] = 0
 
 
 if __name__ == '__main__':
